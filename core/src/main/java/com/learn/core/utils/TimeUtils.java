@@ -3,7 +3,7 @@ package com.learn.core.utils;
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 
-import com.blankj.utilcode.constant.TimeConstants;
+import com.learn.core.constant.TimeConstants;
 
 import java.text.DateFormat;
 import java.text.ParseException;

@@ -1708,7 +1708,8 @@ public final class ImageUtils {
             } else {
                 contentUri = MediaStore.Images.Media.INTERNAL_CONTENT_URI;
             }
-            contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_DCIM + "/" + Utils.getApp().getPackageName());
+            //TODO Android Q 的适配
+            //contentValues.put(MediaStore.Images.Media.RELATIVE_PATH, Environment.DIRECTORY_DCIM + "/" + Utils.getApp().getPackageName());
             Uri uri = Utils.getApp().getContentResolver().insert(contentUri, contentValues);
             if (uri == null) {
                 return null;
