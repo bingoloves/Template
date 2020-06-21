@@ -1,25 +1,30 @@
 package com.learn.template.activity;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
+import android.support.design.bottomnavigation.LabelVisibilityMode;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.view.MenuItem;
 
+import com.learn.core.helper.BottomNavigationViewHelper;
 import com.learn.core.statusbar.StatusBarUtil;
 import com.learn.core.utils.FragmentUtils;
 import com.learn.template.R;
 import com.learn.template.base.BaseActivity;
+import com.learn.template.fragment.ClassifyFragment;
 import com.learn.template.fragment.HomeFragment;
 import com.learn.template.fragment.MeFragment;
 import com.learn.template.fragment.ShopFragment;
+
 import butterknife.BindView;
 
 public class MainActivity extends BaseActivity {
     @BindView(R.id.navigation_bottom)
     BottomNavigationView bottomNavigationView;
-    private Fragment[] mFragments = new Fragment[3];
+    private Fragment[] mFragments = new Fragment[4];
     private int curIndex;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +34,11 @@ public class MainActivity extends BaseActivity {
             curIndex = savedInstanceState.getInt("curIndex");
         }
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        //bottomNavigationView.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         mFragments[0] = HomeFragment.newInstance();
-        mFragments[1] = ShopFragment.newInstance();
-        mFragments[2] = MeFragment.newInstance();
+        mFragments[1] = ClassifyFragment.newInstance();
+        mFragments[2] = ShopFragment.newInstance();
+        mFragments[3] = MeFragment.newInstance();
         FragmentUtils.add(getSupportFragmentManager(), mFragments, R.id.fragment_container, curIndex);
         StatusBarUtil.setStatusBarColor(this,getResources().getColor(R.color.colorPrimaryDark));
     }
@@ -42,11 +49,14 @@ public class MainActivity extends BaseActivity {
                 case R.id.navigation_home:
                     showCurrentFragment(0);
                     return true;
-                case R.id.navigation_shop:
+                case R.id.navigation_classify:
                     showCurrentFragment(1);
                     return true;
-                case R.id.navigation_me:
+                case R.id.navigation_shop:
                     showCurrentFragment(2);
+                    return true;
+                case R.id.navigation_me:
+                    showCurrentFragment(3);
                     return true;
             }
             return false;
@@ -61,5 +71,4 @@ public class MainActivity extends BaseActivity {
         super.onSaveInstanceState(outState, outPersistentState);
         outState.putInt("curIndex", curIndex);
     }
-
 }

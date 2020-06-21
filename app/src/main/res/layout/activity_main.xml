@@ -15,7 +15,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:itemBackground="@color/white"
         android:background="?android:attr/windowBackground"
+        app:itemTextAppearanceActive="@style/navigation_bottom_selected_text"
+        app:itemTextAppearanceInactive="@style/navigation_bottom_normal_text"
+        app:labelVisibilityMode="labeled"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@color/selector_bottom_navigation"
+        app:itemTextColor="@color/selector_bottom_navigation"
         app:menu="@menu/navigation_fragment"/>
 </LinearLayout>

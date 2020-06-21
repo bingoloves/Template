@@ -16,9 +16,19 @@
         android:id="@+id/multi_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <com.youth.banner.Banner
-            android:id="@+id/banner"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="match_parent">
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="135pt"/>
+            <com.learn.template.view.ShopMenu
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="18.5pt"
+                android:layout_marginBottom="16.5pt"/>
+        </FrameLayout>
     </com.learn.multistate.MultistateLayout>
 </LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl_shop_menu"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5pt"
+        android:background="@drawable/shape_shop_menu_bg">
+        <ImageView
+            android:layout_width="18pt"
+            android:layout_height="19pt"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_shop_selected"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:background="@drawable/shape_shop_menu_badge"/>
+</FrameLayout>

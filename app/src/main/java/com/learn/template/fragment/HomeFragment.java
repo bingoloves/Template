@@ -63,7 +63,7 @@ public class HomeFragment extends BaseFragment {
                 GlideHelper.loadRound(context,(String)path,imageView,20);
             }
         });
-        banner.setBannerAnimation(Transformer.ZoomOutSlide);
+        //banner.setBannerAnimation(Transformer.ZoomOutSlide);
         banner.setDelayTime(3000);
         banner.isAutoPlay(true);
         banner.setIndicatorGravity(BannerConfig.CENTER);
@@ -78,11 +78,9 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void lazyLoad() {
-        LogUtils.e("home lazyLoad");
     }
 
     @Override
     protected void refreshLoad() {
-        LogUtils.e("home refreshLoad");
     }
 }

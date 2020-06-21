@@ -46,7 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public Resources getResources() {
-        return AdaptScreenUtils.adaptWidth(super.getResources(), 375);//屏幕适配关键,按照设计图比例来，目前采用的是pt
+        return AdaptScreenUtils.adaptWidth(super.getResources(), 376);//屏幕适配关键,按照设计图比例来，目前采用的是pt
         //return super.getResources();
     }
 

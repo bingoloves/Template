@@ -81,11 +81,9 @@ public class MeFragment extends BaseFragment {
 
     @Override
     protected void lazyLoad() {
-        LogUtils.e("me lazyLoad");
     }
 
     @Override
     protected void refreshLoad() {
-        LogUtils.e("me refreshLoad");
     }
 }

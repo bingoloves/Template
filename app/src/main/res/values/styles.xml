@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--BottomNavigationView 自定义样式 去掉默认缩放效果-->
+    <style name="navigation_bottom_normal_text">
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="navigation_bottom_selected_text">
+        <item name="android:textColor">@color/text_red</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>

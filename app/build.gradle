@@ -40,4 +40,6 @@ dependencies {
     implementation 'com.youth.banner:banner:1.4.10'
     implementation 'com.github.bumptech.glide:glide:4.5.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    //角标库
+    implementation 'q.rorbin:badgeview:1.1.3'
 }
