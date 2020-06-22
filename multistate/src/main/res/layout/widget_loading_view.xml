@@ -4,20 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@color/gray"
     android:orientation="vertical"
     android:visibility="gone">
 
-    <!--<ProgressBar
-        style="@style/style_progressbar"
+    <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="#C93A26"
         android:indeterminateBehavior="repeat"
-        android:indeterminateOnly="true"/>-->
-    <com.learn.multistate.RotateView
+        android:indeterminateOnly="true"/>
+    <!--<com.learn.multistate.RotateView
         android:layout_width="22dp"
         android:layout_height="22dp"
-        android:background="@drawable/loading" />
+        android:background="@drawable/loading" />-->
 
     <TextView
         android:id="@+id/loading_text"

@@ -434,8 +434,8 @@ public class MultistateSwipeLayout extends SwipeRefreshLayout implements View.On
         String reloadBtnText = "点击重试";
 
         int emptyImgId = R.drawable.ic_empty;
-        int errorImgId = R.drawable.ic_error;
-        int noNetWorkImgId = R.drawable.ic_no_network;
+        int errorImgId = R.drawable.ic_error_zhihu;
+        int noNetWorkImgId = R.drawable.ic_no_network_zhihu;
 
         boolean emptyImageVisible = true;
         boolean errorImageVisible = true;

@@ -6,11 +6,11 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5pt"
+        android:layout_marginTop="@dimen/dp_5"
         android:background="@drawable/shape_shop_menu_bg">
         <ImageView
-            android:layout_width="18pt"
-            android:layout_height="19pt"
+            android:layout_width="@dimen/dp_18"
+            android:layout_height="@dimen/dp_19"
             android:layout_gravity="center"
             android:src="@drawable/ic_shop_selected"/>
     </FrameLayout>

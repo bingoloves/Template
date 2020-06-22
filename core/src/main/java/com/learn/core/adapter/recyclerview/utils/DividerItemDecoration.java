@@ -20,6 +20,8 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     private int mOrientation;
     private Paint mPaint;
     private int mDividerHeight = 2;
+    //最后一个是否添加分割线 默认最后一个不需要分割线
+    private boolean lastNeed = false;
 
     /** * 默认样式分割线
      * 宽度为2 颜色为灰色
@@ -53,13 +55,16 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
      * @param dividerColor  分割线颜色
      */
     public DividerItemDecoration(Context context, int orientation, int dividerHeight, int dividerColor) {
+        this(context, orientation,dividerHeight,dividerColor,false);
+    }
+    public DividerItemDecoration(Context context, int orientation, int dividerHeight, int dividerColor,boolean lastNeed) {
         this(context, orientation);
         mDividerHeight = dividerHeight;
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setColor(context.getResources().getColor(dividerColor));
         mPaint.setStyle(Paint.Style.FILL);
+        this.lastNeed = lastNeed;
     }
-
     public void setOrientation(int orientation) {
         if (orientation != HORIZONTAL_LIST && orientation != VERTICAL_LIST) {
             throw new IllegalArgumentException("invalid orientation");
@@ -85,11 +90,11 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     public void drawVertical(Canvas c, RecyclerView parent) {
         final int left = parent.getPaddingLeft();
         final int right = parent.getWidth() - parent.getPaddingRight();
-        final int childCount = parent.getChildCount();
+        final int childCount = lastNeed ? parent.getChildCount():parent.getChildCount()-1;
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
             RecyclerView v = new RecyclerView(parent.getContext());
-            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child                .getLayoutParams();
+            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int top = child.getBottom() + params.bottomMargin;
             final int bottom = top + mDividerHeight;
             if (mDivider != null) {
@@ -106,10 +111,10 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     public void drawHorizontal(Canvas c, RecyclerView parent) {
         final int top = parent.getPaddingTop();
         final int bottom = parent.getHeight() - parent.getPaddingBottom();
-        final int childCount = parent.getChildCount();
+        final int childCount = lastNeed ? parent.getChildCount():parent.getChildCount()-1;
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
-            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child                .getLayoutParams();
+            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int left = child.getRight() + params.rightMargin;
             final int right = left + mDividerHeight;
             if (mDivider != null) {

@@ -3,6 +3,7 @@ package com.learn.template;
 import android.app.Application;
 
 import com.learn.core.crash.CaocConfig;
+import com.learn.core.utils.AppConfig;
 import com.learn.core.utils.LogUtils;
 import com.learn.core.utils.Utils;
 import com.learn.multistate.MultistateLayout;
@@ -21,6 +22,7 @@ public class App extends Application {
         super.onCreate();
         initLog();
         initCrash();
+        AppConfig.getInstance().init(this);//头条适配方案
         Utils.init(this);
         PayApi.init(this);
     }
@@ -79,9 +81,9 @@ public class App extends Application {
                 .setLoadingTextSize(12)
                 .setLoadingTextColor(R.color.colorPrimary)
                 //.setLoadingViewLayoutId(R.layout.custom_loading_view) //如果设置了自定义loading视图,上面三个方法失效
-                .setEmptyImgId(R.drawable.ic_empty2)
-                .setErrorImgId(R.drawable.ic_error)
-                .setNoNetWorkImgId(R.drawable.ic_no_network2)
+                .setEmptyImgId(R.drawable.ic_empty)
+                .setErrorImgId(R.drawable.ic_error_zhihu)
+                .setNoNetWorkImgId(R.drawable.ic_no_network_zhihu)
                 .setEmptyImageVisible(true)
                 .setErrorImageVisible(true)
                 .setNoNetWorkImageVisible(true)

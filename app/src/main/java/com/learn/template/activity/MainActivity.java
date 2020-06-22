@@ -1,15 +1,11 @@
 package com.learn.template.activity;
 
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
-import android.support.design.bottomnavigation.LabelVisibilityMode;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.view.MenuItem;
-
-import com.learn.core.helper.BottomNavigationViewHelper;
 import com.learn.core.statusbar.StatusBarUtil;
 import com.learn.core.utils.FragmentUtils;
 import com.learn.template.R;
