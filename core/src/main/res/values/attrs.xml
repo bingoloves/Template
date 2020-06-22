@@ -7,6 +7,8 @@
         <attr name="nav_bar_right_image" format="reference" /><!--右边图片-->
         <attr name="nav_bar_right_title" format="string|reference" /><!--右边标题-->
         <attr name="nav_bar_title" format="string|reference"/>
+        <attr name="nav_bar_title_color" format="color|integer"/>
+        <attr name="nav_bar_title_size" format="dimension"/>
         <attr name="nav_bar_bg" format="color|integer" />
     </declare-styleable>
     <!--仿微信底部tab-->

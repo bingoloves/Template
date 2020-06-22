@@ -19,6 +19,7 @@
             android:id="@+id/nav_bar_back_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
             tools:src="@drawable/ic_navbar_back_white"/>
         <TextView
             android:id="@+id/nav_bar_back_text"

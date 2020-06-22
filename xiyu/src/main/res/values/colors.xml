@@ -7,8 +7,14 @@
 
 
     <color name="text_red">@color/colorPrimary</color>
-    <color name="text_black">#000</color>
+    <color name="text_black">#000000</color>
     <color name="text_grey">#97999B</color>
+    <color name="text_input_login_hint">#999999</color>
     <color name="text_dark_yellow">#F7B500</color>
-    <color name="input_login_bg">#F7B500</color>
+    <color name="input_login_bg">#DEE2E6</color>
+    <color name="page_bg">#F7F8F9</color>
+    <color name="text_888888">#888888</color>
+    <color name="text_input_register_hint">#888888</color>
+    <color name="line">#E5E5E5</color>
+
 </resources>

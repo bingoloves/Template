@@ -13,7 +13,7 @@
             android:layout_width="@dimen/dp_18"
             android:layout_height="@dimen/dp_19"
             android:layout_gravity="center"
-            android:src="@drawable/ic_shop_selected"/>
+            android:src="@drawable/ic_shop_car"/>
     </FrameLayout>
 
     <TextView

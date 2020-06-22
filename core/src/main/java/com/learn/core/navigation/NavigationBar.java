@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -28,6 +29,8 @@ public class NavigationBar extends RelativeLayout {
     private ImageView navBarBackIcon,navBarMenuIcon;
     private String backText,title,menuText;
     private Drawable backIcon,menuIcon;
+    private int titleColor = Color.WHITE;
+    private float titleSize = 16f;
     public NavigationBar(Context context) {
         super(context);
     }
@@ -56,6 +59,10 @@ public class NavigationBar extends RelativeLayout {
                 backIcon = a.getDrawable(attr);
             } else if (attr == R.styleable.NavigationBar_nav_bar_title) {
                 title = a.getString(attr);
+            } else if (attr == R.styleable.NavigationBar_nav_bar_title_color) {
+                titleColor = a.getColor(attr,Color.WHITE);
+            }  else if (attr == R.styleable.NavigationBar_nav_bar_title_size) {
+                titleSize = a.getDimension(attr,16f);
             } else if (attr == R.styleable.NavigationBar_nav_bar_right_title) {
                 menuText = a.getString(attr);
             }else if (attr == R.styleable.NavigationBar_nav_bar_right_image) {
@@ -87,6 +94,8 @@ public class NavigationBar extends RelativeLayout {
         navBarMenuIcon.setImageDrawable(menuIcon);
         navBarMenuText.setText(backText);
         navBarTitle.setText(title);
+        navBarTitle.setTextColor(titleColor);
+        navBarTitle.setTextSize(titleSize);
         navBarMenuText.setText(menuText);
     }
 
@@ -123,7 +132,10 @@ public class NavigationBar extends RelativeLayout {
     public void setBackClickListener(@Nullable OnClickListener listener){
         navBarBackLayout.setOnClickListener(listener);
     }
-    public void setTitleSize(int size){
-        navBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
+    public void setTitleSize(float size){
+        navBarTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP,size);
+    }
+    public void setTitleColor(@ColorInt int color){
+        navBarTitle.setTextColor(color);
     }
 }
