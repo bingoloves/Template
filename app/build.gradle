@@ -34,6 +34,7 @@ dependencies {
     implementation project(':dialog')
     implementation project(':multistate')
     implementation project(':pay')
+    implementation project(':chart')
     implementation 'com.android.support:multidex:1.0.3'
     //黄油刀
     implementation 'com.jakewharton:butterknife:8.8.0'
