@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="BaseArcHeaderView">
+        <attr name="ahv_height" format="dimension|reference"/>
+        <attr name="ahv_start_color" format="color|reference"/>
+        <attr name="ahv_end_color" format="color|reference"/>
+        <attr name="ahv_src" format="reference"/>
+        <attr name="ahv_direction">
+            <enum name="downOutSide" value="0"/>
+            <enum name="downInSide" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="RippleView">
+        <attr name="rv_color" format="color"/>
+        <attr name="rv_mini_radius" format="dimension"/>
+        <attr name="rv_radius_step" format="dimension"/>
+        <attr name="rv_repeat_count" format="integer"/>
+        <attr name="rv_auto_run_on_attached" format="boolean"/>
+    </declare-styleable>
+
+    <attr name="base_what">
+        <enum name="BASE_HORIZONTAL" value="0"/>
+        <enum name="BASE_VERTICAL" value="1"/>
+    </attr>
+    <attr name="aspect_x" format="integer"/>
+    <attr name="aspect_y" format="integer"/>
+    <declare-styleable name="AspectRatioFrameLayout">
+        <attr name="base_what"/>
+        <attr name="aspect_x"/>
+        <attr name="aspect_y"/>
+    </declare-styleable>
+
+    <declare-styleable name="AspectRatioLinearLayout">
+        <attr name="base_what"/>
+        <attr name="aspect_x"/>
+        <attr name="aspect_y"/>
+    </declare-styleable>
+
+    <declare-styleable name="AspectRatioImageView">
+        <attr name="base_what"/>
+        <attr name="aspect_x"/>
+        <attr name="aspect_y"/>
+    </declare-styleable>
+</resources>

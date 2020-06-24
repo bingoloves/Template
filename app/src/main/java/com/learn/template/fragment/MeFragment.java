@@ -3,6 +3,7 @@ package com.learn.template.fragment;
 import android.os.Bundle;
 import android.view.View;
 
+import com.learn.component.archeaderview.LGradientArcHeaderView;
 import com.learn.core.utils.LogUtils;
 import com.learn.pay.OnPayResultListener;
 import com.learn.pay.PayApi;
@@ -11,6 +12,7 @@ import com.learn.pay.WxPayBean;
 import com.learn.template.R;
 import com.learn.template.base.BaseFragment;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -25,6 +27,8 @@ public class MeFragment extends BaseFragment {
         fragment.setArguments(args);
         return fragment;
     }
+    @BindView(R.id.lg_header_view)
+    LGradientArcHeaderView lGradientArcHeaderView;
 
     @OnClick({R.id.wxpay,R.id.alipay})
     public void clickEvent(View view){
