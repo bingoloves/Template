@@ -1,7 +1,6 @@
 package com.learn.core.navigation;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -11,14 +10,11 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.learn.core.R;
-import com.learn.core.utils.AdaptScreenUtils;
 
 public class NavigationBar extends RelativeLayout {
     private Context context;
