@@ -30,7 +30,7 @@ public class MeFragment extends BaseFragment {
     @BindView(R.id.lg_header_view)
     LGradientArcHeaderView lGradientArcHeaderView;
 
-    @OnClick({R.id.wxpay,R.id.alipay})
+    /*@OnClick({R.id.wxpay,R.id.alipay})
     public void clickEvent(View view){
         switch (view.getId()){
             case R.id.wxpay:
@@ -72,7 +72,7 @@ public class MeFragment extends BaseFragment {
                 });
                 break;
         }
-    }
+    }*/
     @Override
     protected int getContentView() {
         return R.layout.fragment_me;

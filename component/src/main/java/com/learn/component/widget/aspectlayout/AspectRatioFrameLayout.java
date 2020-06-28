@@ -6,6 +6,7 @@ import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.learn.component.IViewAttrDelegate;
@@ -52,7 +53,9 @@ public class AspectRatioFrameLayout extends FrameLayout implements IViewAttrDele
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        setMeasuredDimension(getDefaultSize(0, widthMeasureSpec), getDefaultSize(0, heightMeasureSpec));
+        int width = getDefaultSize(0, widthMeasureSpec);
+        int height = getDefaultSize(0, heightMeasureSpec);
+        setMeasuredDimension(width, height);
         switch (helper.getBaseWhat()){
             case AspectRatioHelper.BASE_HORIZONTAL:
                 heightMeasureSpec = helper.calHeightMeasureSpec(getMeasuredWidth());
