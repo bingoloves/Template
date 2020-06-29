@@ -5,14 +5,18 @@ import android.content.res.Resources;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.learn.core.statusbar.StatusBarUtil;
 import com.learn.core.toast.ToastUtil;
 import com.learn.core.utils.AdaptScreenUtils;
+import com.learn.core.utils.LogUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -39,6 +43,25 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void setContentView(int layoutResID) {
         //setBlackWhiteScreen();
+        /*设置高刷新率(6.0以后才有的) 部分手机支持高刷新率*/
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            LogUtils.e("进入");
+            // 获取系统window支持的模式
+            Display.Mode[] supportedModes = getWindow().getWindowManager().getDefaultDisplay().getSupportedModes();
+            // 对获取的模式，基于刷新率的大小进行排序，从小到大排序
+            float maxRate = 0;Display.Mode maxMode = supportedModes[0];
+            for (Display.Mode supportedMode : supportedModes) {
+                float refreshRate = supportedMode.getRefreshRate();
+                if (refreshRate>maxRate){
+                    maxRate = refreshRate;
+                    maxMode = supportedMode;
+                }
+            }
+            LogUtils.e("maxRate = "+maxRate);
+            WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+            layoutParams.preferredDisplayModeId = maxMode.getModeId();
+            getWindow().setAttributes(layoutParams);
+        }*/
         super.setContentView(layoutResID);
         initStatusBar();
         unbinder = ButterKnife.bind(this);

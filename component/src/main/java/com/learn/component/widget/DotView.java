@@ -95,12 +95,14 @@ public class DotView extends AppCompatTextView implements IViewAttrDelegate {
 
     public void setUnReadCount(@IntRange(from = 0) int unReadCount) {
         this.unReadCount = unReadCount;
-        if (unReadCount > 99)
+        if (unReadCount > 99){
             setText("99+");
-        else if (unReadCount > 0)
+        } else if (unReadCount > 0){
             setText(String.valueOf(unReadCount));
-        else
+        } else {
             setText("");
+        }
+
     }
 
     public void setShape(@DotShape int shape) {

@@ -9,18 +9,7 @@
         android:layout_height="wrap_content"
         app:nav_bar_title="我的"
         app:nav_bar_bg="@color/colorPrimary"/>
-    <!--<Button
-        android:id="@+id/wxpay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="微信"
-        android:textAllCaps="false"/>
-    <Button
-        android:id="@+id/alipay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="支付宝"
-        android:textAllCaps="false"/>-->
+
 
     <com.learn.component.archeaderview.LGradientArcHeaderView
         android:id="@+id/lg_header_view"
@@ -30,4 +19,28 @@
         app:ahv_start_color="#FF00BA86"
         app:ahv_height="@dimen/dp_30"
         app:ahv_direction="downOutSide"/>
+    <Button
+        android:id="@+id/wxpay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="微信"
+        android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/alipay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="支付宝"
+        android:textAllCaps="false"/>
+    <com.learn.component.widget.MsgView
+        android:id="@+id/msgView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:textSize="11.5sp"
+        android:visibility="gone"
+        app:mv_backgroundColor="#FD481F"
+        app:mv_isRadiusHalfHeight="true"
+        app:mv_strokeColor="#ffffff"
+        app:mv_strokeWidth="1dp"/>
 </LinearLayout>

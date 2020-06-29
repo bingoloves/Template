@@ -109,7 +109,12 @@ public class MainActivity extends BaseActivity {
                 dotView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10);
                 itemView.addView(dotView, params);
                 if (i < menuView.getChildCount() - 1) {
-                    dotView.setUnReadCount(new Random().nextInt(120) + 1);
+                    if (i == 1){
+                        dotView.setUnReadCount(102);
+                    } else {
+                        dotView.setUnReadCount(new Random().nextInt(120) + 1);
+                    }
+
                 }
                 dotViews[i] = dotView;
             }

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.learn.component.archeaderview.LGradientArcHeaderView;
+import com.learn.component.utils.UnreadMsgUtils;
+import com.learn.component.widget.MsgView;
 import com.learn.core.utils.LogUtils;
 import com.learn.pay.OnPayResultListener;
 import com.learn.pay.PayApi;
@@ -29,8 +31,10 @@ public class MeFragment extends BaseFragment {
     }
     @BindView(R.id.lg_header_view)
     LGradientArcHeaderView lGradientArcHeaderView;
+    @BindView(R.id.msgView)
+    MsgView msgView;
 
-    /*@OnClick({R.id.wxpay,R.id.alipay})
+    @OnClick({R.id.wxpay,R.id.alipay})
     public void clickEvent(View view){
         switch (view.getId()){
             case R.id.wxpay:
@@ -72,7 +76,7 @@ public class MeFragment extends BaseFragment {
                 });
                 break;
         }
-    }*/
+    }
     @Override
     protected int getContentView() {
         return R.layout.fragment_me;
@@ -80,7 +84,10 @@ public class MeFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-
+        //UnreadMsgUtils.show(msgView,102);
+        if (msgView != null) {
+            UnreadMsgUtils.show(msgView, 88);
+        }
     }
 
     @Override
