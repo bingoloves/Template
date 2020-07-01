@@ -31,6 +31,18 @@
         android:layout_height="wrap_content"
         android:text="支付宝"
         android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择时间"
+        android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择地址"
+        android:textAllCaps="false"/>
     <com.learn.component.widget.MsgView
         android:id="@+id/msgView"
         android:layout_width="wrap_content"
@@ -43,4 +55,12 @@
         app:mv_isRadiusHalfHeight="true"
         app:mv_strokeColor="#ffffff"
         app:mv_strokeWidth="1dp"/>
+    <com.learn.picker.widget.PickerView
+        android:id="@+id/pickerview"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:pv_is_circulation="false"
+        app:pv_alignment="center"
+        app:pv_orientation="horizontal" />
 </LinearLayout>
