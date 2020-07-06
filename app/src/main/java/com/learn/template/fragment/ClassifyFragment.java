@@ -1,14 +1,17 @@
 package com.learn.template.fragment;
 
+import android.arch.lifecycle.Observer;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.jeremyliao.liveeventbus.LiveEventBus;
 import com.learn.core.adapter.recyclerview.CommonAdapter;
 import com.learn.core.adapter.recyclerview.base.ViewHolder;
 import com.learn.core.adapter.recyclerview.utils.DividerItemDecoration;
@@ -54,6 +57,14 @@ public class ClassifyFragment extends BaseFragment {
     private boolean mIsFromClick = false;
     @Override
     protected void initView(View view) {
+        LiveEventBus
+                .get("send_msg", String.class)
+                .observe(this, new Observer<String>() {
+                    @Override
+                    public void onChanged(@Nullable String s) {
+                        toast(s);
+                    }
+                });
         //左侧类型
         LinearLayoutManager leftManager = new LinearLayoutManager(getContext());
         LinearLayoutManager rightManager = new LinearLayoutManager(getContext());

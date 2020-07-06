@@ -1,1 +1,1 @@
-include ':app', ':core', ':multistate', ':pay', ':dialog', ':wheel', ':chart', ':component', ':picker'
+include ':app', ':core', ':multistate', ':pay', ':dialog', ':wheel', ':chart', ':component', ':picker', ':live-event-bus'

@@ -1,7 +1,10 @@
 package com.learn.template;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.multidex.MultiDex;
 
+import com.jeremyliao.liveeventbus.LiveEventBus;
 import com.learn.core.crash.CaocConfig;
 import com.learn.core.utils.AppConfig;
 import com.learn.core.utils.LogUtils;
@@ -25,6 +28,7 @@ public class App extends Application {
         AppConfig.getInstance().init(this);//头条适配方案
         Utils.init(this);
         PayApi.init(this);
+        LiveEventBus.config().enableLogger(BuildConfig.DEBUG);//.setContext(this)/*内部使用广播时需要的处理*/;
     }
     public void initLog() {
         LogUtils.Config config = LogUtils.getConfig()
@@ -99,5 +103,10 @@ public class App extends Application {
                 .setReloadBtnBackgroundResource(R.drawable.selector_btn)
                 .setReloadBtnVisible(false)
                 .setReloadClickArea(MultistateLayout.FULL);
+    }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }

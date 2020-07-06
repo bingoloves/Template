@@ -1,10 +1,16 @@
 package com.learn.template.fragment;
 
+import android.arch.lifecycle.Observer;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.google.gson.Gson;
+import com.jeremyliao.liveeventbus.LiveEventBus;
 import com.learn.component.archeaderview.LGradientArcHeaderView;
 import com.learn.component.utils.UnreadMsgUtils;
 import com.learn.component.widget.MsgView;
@@ -25,6 +31,7 @@ import com.learn.picker.widget.BasePickerView;
 import com.learn.picker.widget.DefaultCenterDecoration;
 import com.learn.picker.widget.PickerView;
 import com.learn.template.R;
+import com.learn.template.activity.WebActivity;
 import com.learn.template.base.BaseFragment;
 import com.learn.template.bean.City;
 import com.learn.template.bean.County;
@@ -32,6 +39,7 @@ import com.learn.template.bean.Province;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -54,8 +62,7 @@ public class MeFragment extends BaseFragment implements TimePicker.OnTimeSelectL
     LGradientArcHeaderView lGradientArcHeaderView;
     @BindView(R.id.msgView)
     MsgView msgView;
-
-    @OnClick({R.id.wxpay,R.id.alipay,R.id.time,R.id.address})
+    @OnClick({R.id.wxpay,R.id.alipay,R.id.time,R.id.address,R.id.send_msg,R.id.send_sticky_msg})
     public void clickEvent(View view){
         switch (view.getId()){
             case R.id.wxpay:
@@ -101,6 +108,13 @@ public class MeFragment extends BaseFragment implements TimePicker.OnTimeSelectL
                 break;
             case R.id.address:
                 selectAddress();
+                break;
+            case R.id.send_msg:
+                LiveEventBus.get("send_msg").post("Hello world!");
+                break;
+            case R.id.send_sticky_msg:
+                LiveEventBus.get("send_sticky_msg").post("Hello world!");
+                startActivity(new Intent(getContext(), WebActivity.class));
                 break;
         }
     }

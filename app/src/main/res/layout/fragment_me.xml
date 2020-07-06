@@ -43,6 +43,19 @@
         android:layout_height="wrap_content"
         android:text="选择地址"
         android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/send_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送消息"
+        android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/send_sticky_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送Sticky消息"
+        android:textAllCaps="false"/>
+
     <com.learn.component.widget.MsgView
         android:id="@+id/msgView"
         android:layout_width="wrap_content"
