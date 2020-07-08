@@ -11,8 +11,10 @@
         android:layout_height="wrap_content"
         app:nav_bar_title="首页"
         app:nav_bar_bg="@color/colorPrimary"/>
-    <GridView
+    <com.learn.template.view.NineGridView
         android:id="@+id/gridView"
+        android:scrollbars="none"
+        android:overScrollMode="never"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="4"

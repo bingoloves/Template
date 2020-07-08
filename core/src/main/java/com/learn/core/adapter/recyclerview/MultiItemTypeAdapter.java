@@ -9,6 +9,7 @@ import com.learn.core.adapter.recyclerview.base.ItemViewDelegate;
 import com.learn.core.adapter.recyclerview.base.ItemViewDelegateManager;
 import com.learn.core.adapter.recyclerview.base.ViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +18,7 @@ import java.util.List;
 public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
     protected Context mContext;
     protected List<T> mDatas;
-
+    protected List<ViewHolder> viewHolders;
     protected ItemViewDelegateManager mItemViewDelegateManager;
     protected OnItemClickListener mOnItemClickListener;
 
@@ -25,6 +26,7 @@ public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
     public MultiItemTypeAdapter(Context context, List<T> datas) {
         mContext = context;
         mDatas = datas;
+        viewHolders = new ArrayList<>();
         mItemViewDelegateManager = new ItemViewDelegateManager();
     }
 
@@ -112,6 +114,10 @@ public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
         return mItemViewDelegateManager.getItemViewDelegateCount() > 0;
     }
 
+    public List<ViewHolder> getViewHolders() {
+        return viewHolders;
+    }
+
     public interface OnItemClickListener {
         void onItemClick(View view, RecyclerView.ViewHolder holder, int position);
 
@@ -130,6 +136,7 @@ public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
         if (datas!=null){
             datas.clear();
         }
+        //viewHolders.clear();
         this.notifyDataSetChanged();
     }
 
@@ -139,12 +146,9 @@ public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
      */
     public void update(List<T> list){
         if (list!=null){
-            List<T> datas = getDatas();
-            if (datas!=null){
-                datas.clear();
-                datas.addAll(list);
-            }
-            this.notifyDataSetChanged();
+            //viewHolders.clear();
+            mDatas = list;
         }
+        this.notifyDataSetChanged();
     }
 }

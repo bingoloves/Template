@@ -12,4 +12,10 @@
         <item>http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f20b3ea10.jpg</item>
         <item>http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f21927f8d.jpg</item>
     </array>
+    <array name="test_url_2">
+        <item>https://n.sinaimg.cn/ent/transform/519/w580h739/20200708/3323-iwasyei2748721.jpg</item>
+        <item>http://n.sinaimg.cn/ent/4_img/upload/68a6634e/125/w690h1035/20200708/e35d-iwasyei2634466.jpg</item>
+        <item>https://n.sinaimg.cn/ent/transform/256/w630h426/20200708/6f67-iwasyei2070159.jpg</item>
+        <item>https://n.sinaimg.cn/ent/transform/354/w630h524/20200708/e02c-iwasyei2068214.jpg</item>
+    </array>
 </resources>

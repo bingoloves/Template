@@ -48,14 +48,17 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter {
         return super.getItemViewType(position);
     }
 
+    public List<T> getDatas() {
+        return mDatas;
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ItemViewDelegate itemViewDelegate = mItemViewDelegateManager.getItemViewDelegate(mDatas.get(position), position);
         int layoutId = itemViewDelegate.getItemViewLayoutId();
         ViewHolder viewHolder = null;
         if (convertView == null) {
-            View itemView = LayoutInflater.from(mContext).inflate(layoutId, parent,
-                    false);
+            View itemView = LayoutInflater.from(mContext).inflate(layoutId, parent,false);
             viewHolder = new ViewHolder(mContext, itemView, parent, position);
             viewHolders.add(viewHolder);
             viewHolder.mLayoutId = layoutId;
@@ -97,8 +100,8 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter {
     public void update(List<T> data){
         if (data!=null){
             mDatas.clear();
-            mDatas.addAll(data);
-            notifyDataSetChanged();
+            mDatas = data;
         }
+        notifyDataSetChanged();
     }
 }
