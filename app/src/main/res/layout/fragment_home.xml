@@ -12,26 +12,4 @@
         app:nav_bar_title="首页"
         app:nav_bar_bg="@color/colorPrimary"/>
 
-    <com.learn.multistate.MultistateLayout
-        android:id="@+id/multi_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <com.youth.banner.Banner
-                android:id="@+id/banner"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_135"
-                app:indicator_width="@dimen/dp_8"
-                app:indicator_height="@dimen/dp_8"
-                app:indicator_margin="@dimen/dp_5"/>
-            <com.learn.template.view.ShopMenu
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="@dimen/dp_18"
-                android:layout_marginBottom="@dimen/dp_16"/>
-        </FrameLayout>
-    </com.learn.multistate.MultistateLayout>
 </LinearLayout>

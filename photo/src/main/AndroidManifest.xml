@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.learn.photo">
+    <application>
+        <activity
+            android:name=".PictureActivity"
+            android:theme="@style/AppThemeTrans">
+        </activity>
+    </application>
+</manifest>

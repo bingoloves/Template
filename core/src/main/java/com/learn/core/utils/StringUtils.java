@@ -2,7 +2,11 @@ package com.learn.core.utils;
 
 import android.content.res.Resources;
 import android.support.annotation.ArrayRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
+import android.text.TextUtils;
+
+import java.util.List;
 
 /**
  * <pre>
@@ -27,7 +31,18 @@ public final class StringUtils {
     public static boolean isEmpty(final CharSequence s) {
         return s == null || s.length() == 0;
     }
-
+    /**
+     * join方法
+     * @param delimiter
+     * @param objects
+     * @return 字符串
+     */
+    public static String join(@NonNull CharSequence delimiter, Object[] objects){
+        return TextUtils.join(delimiter,objects);
+    }
+    public static String join(@NonNull CharSequence delimiter, List list){
+        return TextUtils.join(delimiter,list);
+    }
     /**
      * Return whether the string is null or whitespace.
      *

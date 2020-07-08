@@ -42,6 +42,7 @@ dependencies {
     implementation project(':component')
     implementation project(':picker')
     implementation project(':live-event-bus')
+    implementation project(':photo')
     implementation 'com.android.support:multidex:1.0.3'
     //黄油刀
     implementation 'com.jakewharton:butterknife:8.8.0'

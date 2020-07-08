@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <declare-styleable name="NineGridView">
+        <attr name="max_count" format="integer"/>
+        <attr name="item_height" format="integer"/>
+        <attr name="columns" format="integer"/>
+        <attr name="isEdit" format="boolean"/>
+        <attr name="margin" format="dimension"/>
+        <attr name="padding" format="dimension"/>
+        <attr name="delete_icon" format="reference"/>
+        <attr name="add_icon" format="reference"/>
+    </declare-styleable>
+
+</resources>
