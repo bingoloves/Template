@@ -6,18 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MultiItemTypeAdapter<T> extends BaseAdapter {
     protected Context mContext;
     protected List<T> mDatas;
-
+    protected List<ViewHolder> viewHolders;
     private ItemViewDelegateManager mItemViewDelegateManager;
 
 
     public MultiItemTypeAdapter(Context context, List<T> datas) {
         this.mContext = context;
         this.mDatas = datas;
+        this.viewHolders = new ArrayList<>();
         mItemViewDelegateManager = new ItemViewDelegateManager();
     }
 
@@ -55,14 +57,13 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter {
             View itemView = LayoutInflater.from(mContext).inflate(layoutId, parent,
                     false);
             viewHolder = new ViewHolder(mContext, itemView, parent, position);
+            viewHolders.add(viewHolder);
             viewHolder.mLayoutId = layoutId;
             onViewHolderCreated(viewHolder, viewHolder.getConvertView());
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
             viewHolder.mPosition = position;
         }
-
-
         convert(viewHolder, getItem(position), position);
         return viewHolder.getConvertView();
     }
@@ -87,6 +88,10 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter {
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    public List<ViewHolder> getViewHolders() {
+        return viewHolders;
     }
 
     public void update(List<T> data){

@@ -11,5 +11,12 @@
         android:layout_height="wrap_content"
         app:nav_bar_title="首页"
         app:nav_bar_bg="@color/colorPrimary"/>
-
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="4"
+        android:layout_margin="@dimen/dp_10"
+        android:horizontalSpacing="@dimen/dp_6"
+        android:verticalSpacing="@dimen/dp_6"/>
 </LinearLayout>
