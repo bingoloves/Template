@@ -10,7 +10,9 @@ import com.learn.core.adapter.recyclerview.base.ItemViewDelegateManager;
 import com.learn.core.adapter.recyclerview.base.ViewHolder;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zhy on 16/4/9.
@@ -18,7 +20,7 @@ import java.util.List;
 public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
     protected Context mContext;
     protected List<T> mDatas;
-    protected List<ViewHolder> viewHolders;
+    protected Map<Integer,ViewHolder> cacheMap;
     protected ItemViewDelegateManager mItemViewDelegateManager;
     protected OnItemClickListener mOnItemClickListener;
 
@@ -26,7 +28,7 @@ public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
     public MultiItemTypeAdapter(Context context, List<T> datas) {
         mContext = context;
         mDatas = datas;
-        viewHolders = new ArrayList<>();
+        cacheMap = new HashMap<>();
         mItemViewDelegateManager = new ItemViewDelegateManager();
     }
 
@@ -87,12 +89,12 @@ public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         convert(holder, mDatas.get(position));
+        cacheMap.put(position,holder);
     }
 
     @Override
     public int getItemCount() {
-        int itemCount = mDatas.size();
-        return itemCount;
+        return mDatas.size();
     }
 
 
@@ -113,9 +115,13 @@ public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
     protected boolean useItemViewDelegateManager() {
         return mItemViewDelegateManager.getItemViewDelegateCount() > 0;
     }
-
-    public List<ViewHolder> getViewHolders() {
-        return viewHolders;
+    /**
+     * 获取对应位置的视图Holder
+     * @param position
+     * @return
+     */
+    public ViewHolder getViewHolder(int position) {
+        return cacheMap.get(position);
     }
 
     public interface OnItemClickListener {
@@ -127,16 +133,39 @@ public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.mOnItemClickListener = onItemClickListener;
     }
-
+    public void add(T data){
+        if (data != null){
+            mDatas.add(mDatas.size(),data);
+        }
+        notifyDataSetChanged();
+    }
+    public void add(List<T> data){
+        if (data!=null){
+            mDatas.addAll(data);
+        }
+        notifyDataSetChanged();
+    }
+    public void remove(T data){
+        if (data != null){
+            mDatas.remove(data);
+        }
+        notifyDataSetChanged();
+    }
+    public void remove(int position){
+        mDatas.remove(position);
+        notifyDataSetChanged();
+    }
+    public void removeLast(){
+        if (mDatas.size()>0){
+            mDatas.remove(mDatas.size()-1);
+            notifyDataSetChanged();
+        }
+    }
     /**
      * 数据清除
      */
     public void clear(){
-        List<T> datas = getDatas();
-        if (datas!=null){
-            datas.clear();
-        }
-        //viewHolders.clear();
+        mDatas.clear();
         this.notifyDataSetChanged();
     }
 
@@ -146,7 +175,6 @@ public class MultiItemTypeAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
      */
     public void update(List<T> list){
         if (list!=null){
-            //viewHolders.clear();
             mDatas = list;
         }
         this.notifyDataSetChanged();

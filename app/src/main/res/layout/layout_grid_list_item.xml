@@ -9,6 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
+        android:minWidth="@dimen/dp_90"
+        android:layout_centerInParent="true"
+        android:minHeight="@dimen/dp_60"
         android:scaleType="centerCrop"/>
 
     <ImageView

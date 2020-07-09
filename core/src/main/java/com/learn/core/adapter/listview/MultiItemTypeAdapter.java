@@ -7,19 +7,21 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MultiItemTypeAdapter<T> extends BaseAdapter {
     protected Context mContext;
     protected List<T> mDatas;
-    protected List<ViewHolder> viewHolders;
+    protected Map<Integer,ViewHolder> cacheMap;
     private ItemViewDelegateManager mItemViewDelegateManager;
 
 
     public MultiItemTypeAdapter(Context context, List<T> datas) {
         this.mContext = context;
         this.mDatas = datas;
-        this.viewHolders = new ArrayList<>();
+        this.cacheMap = new HashMap<>();
         mItemViewDelegateManager = new ItemViewDelegateManager();
     }
 
@@ -60,7 +62,6 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter {
         if (convertView == null) {
             View itemView = LayoutInflater.from(mContext).inflate(layoutId, parent,false);
             viewHolder = new ViewHolder(mContext, itemView, parent, position);
-            viewHolders.add(viewHolder);
             viewHolder.mLayoutId = layoutId;
             onViewHolderCreated(viewHolder, viewHolder.getConvertView());
         } else {
@@ -68,6 +69,7 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter {
             viewHolder.mPosition = position;
         }
         convert(viewHolder, getItem(position), position);
+        cacheMap.put(position,viewHolder);
         return viewHolder.getConvertView();
     }
 
@@ -93,10 +95,43 @@ public class MultiItemTypeAdapter<T> extends BaseAdapter {
         return position;
     }
 
-    public List<ViewHolder> getViewHolders() {
-        return viewHolders;
+    /**
+     * 获取对应位置的视图Holder
+     * @param position
+     * @return
+     */
+    public ViewHolder getViewHolder(int position) {
+        return cacheMap.get(position);
     }
 
+    public void add(T data){
+        if (data != null){
+            mDatas.add(mDatas.size(),data);
+        }
+        notifyDataSetChanged();
+    }
+    public void add(List<T> data){
+        if (data!=null){
+            mDatas.addAll(data);
+        }
+        notifyDataSetChanged();
+    }
+    public void remove(T data){
+        if (data != null){
+            mDatas.remove(data);
+        }
+        notifyDataSetChanged();
+    }
+    public void remove(int position){
+        mDatas.remove(position);
+        notifyDataSetChanged();
+    }
+    public void removeLast(){
+        if (mDatas.size()>0){
+            mDatas.remove(mDatas.size()-1);
+            notifyDataSetChanged();
+        }
+    }
     public void update(List<T> data){
         if (data!=null){
             mDatas.clear();

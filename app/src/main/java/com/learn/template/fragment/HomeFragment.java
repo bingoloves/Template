@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.ThumbnailImageViewTarget;
@@ -24,6 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
@@ -43,7 +45,20 @@ public class HomeFragment extends BaseFragment {
     @BindView(R.id.gridView)
     NineGridView gridView;
 
+    @OnClick({R.id.btn_remove,R.id.btn_add})
+    public void clickEvent(View view){
+        switch (view.getId()){
+            case R.id.btn_add:
+                adapter.add("https://n.sinaimg.cn/ent/transform/256/w630h426/20200708/6f67-iwasyei2070159.jpg");
+                break;
+            case R.id.btn_remove:
+                adapter.removeLast();
+                break;
+        }
+    }
     CommonAdapter adapter;
+    List<String> list = new ArrayList<>();
+
 
     @Override
     protected int getContentView() {
@@ -52,31 +67,36 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initView(View view) {
-        String[] images = getResources().getStringArray(R.array.test_url);
+        //String[] images = getResources().getStringArray(R.array.test_url);
         //gridView.setLayoutManager(new GridLayoutManager(getContext(),4));
-        adapter = new CommonAdapter<String>(getContext(),R.layout.layout_grid_list_item,Arrays.asList(images)) {
+        initData();
+        adapter = new CommonAdapter<String>(getContext(),R.layout.layout_grid_list_item,list) {
             @Override
             protected void convert(ViewHolder viewHolder, String path, int position) {
                 ImageView imageView = viewHolder.getView(R.id.iv_pic);
                 ImageView deleteView = viewHolder.getView(R.id.iv_delete);
-//                Glide.with(getContext()).load(path).into(imageView);
+                RequestOptions option = new RequestOptions();
+                option.diskCacheStrategy(DiskCacheStrategy.NONE);
                 Glide.with(getContext())
-                        .asDrawable()
                         .load(path)
-                        .apply(RequestOptions.placeholderOf(R.drawable.ic_loading))
-                        .thumbnail(.2f)
-                        .transition(withCrossFade())
-                        .into(new SimpleTarget<Drawable>() {
-                            @Override
-                            public void onResourceReady(final Drawable resource, Transition<? super Drawable> transition) {
-                                transition.transition(resource, new ThumbnailImageViewTarget(imageView) {
-                                    @Override
-                                    protected Drawable getDrawable(Object re) {
-                                        return resource;
-                                    }
-                                });
-                            }
-                        });
+                        .apply(option)
+                        .into(imageView);
+//                Glide.with(getContext())
+//                        .asDrawable()
+//                        .load(path)
+//                        .thumbnail(.2f)
+//                        .transition(withCrossFade())
+//                        .into(new SimpleTarget<Drawable>() {
+//                            @Override
+//                            public void onResourceReady(final Drawable resource, Transition<? super Drawable> transition) {
+//                                transition.transition(resource, new ThumbnailImageViewTarget(imageView) {
+//                                    @Override
+//                                    protected Drawable getDrawable(Object re) {
+//                                        return resource;
+//                                    }
+//                                });
+//                            }
+//                        });
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -84,11 +104,10 @@ public class HomeFragment extends BaseFragment {
                         List<String> datas = adapter.getDatas();
                         for (int i = 0; i < datas.size(); i++) {
                             String pictureUrl = datas.get(i);
-                            ViewHolder holder = (ViewHolder) adapter.getViewHolders().get(i);
+                            ViewHolder holder = (ViewHolder) adapter.getViewHolder(i);
                             ImageView view = (ImageView) holder.getView(R.id.iv_pic);
                             int width = view.getWidth();
                             int height = view.getHeight();
-                            LogUtils.e(width+"----"+height);
                             PictureData e = new PictureData();
                             e.location = new int[2];
                             view.getLocationOnScreen(e.location);
@@ -97,7 +116,7 @@ public class HomeFragment extends BaseFragment {
                             e.size = new int[]{width,height};
                             e.url = pictureUrl;
                             e.originalUrl = pictureUrl;
-                            e.imageSize = new int[]{width,height};//new int[]{480, 360};
+                            e.imageSize = new int[]{480, 360};//new int[]{width,height};
                             list.add(e);
                         }
                         PictureActivity.start(getContext(), list, position);
@@ -108,13 +127,13 @@ public class HomeFragment extends BaseFragment {
         gridView.setAdapter(adapter);
 //        NineAdapter nineAdapter = new NineAdapter(getContext(),Arrays.asList(images));
 //        gridView.setAdapter(nineAdapter);
-        String[] images2 = getResources().getStringArray(R.array.test_url_2);
-        gridView.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                adapter.update(Arrays.asList(images2));
-            }
-        },2000);
+//        String[] images2 = getResources().getStringArray(R.array.test_url_2);
+//        gridView.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                adapter.update(list);
+//            }
+//        },2000);
 //        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -140,6 +159,20 @@ public class HomeFragment extends BaseFragment {
 //                        PictureActivity.start(getContext(), list, position);
 //            }
 //        });
+    }
+
+    private void initData() {
+        list.add("http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f19cc0079.jpg");
+        list.add("http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f1ac12d1d.jpg");
+        list.add("http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f1bad97d1.jpg");
+        list.add("http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f1c83c228.jpg");
+        list.add("http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f1d53e3dd.jpg");
+        list.add("http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f1e37fea9.jpg");
+        list.add("http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f1ef4d709.jpg");
+        list.add("http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f20b3ea10.jpg");
+        list.add("http://bpic.588ku.com/element_origin_min_pic/00/00/05/115732f21927f8d.jpg");
+        list.add("https://ww3.sinaimg.cn/bmiddle/9c23939bgy1ggjpdpyljmg20au0aae82.gif");
+        list.add("https://upload-images.jianshu.io/upload_images/5885602-edb0d53965efd964.gif");
     }
 
     @Override
