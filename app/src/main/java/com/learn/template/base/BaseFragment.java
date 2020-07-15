@@ -1,5 +1,6 @@
 package com.learn.template.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -23,8 +24,16 @@ public abstract class BaseFragment extends Fragment {
      */
     private boolean isCreateView;
     private Unbinder unbinder;
+    protected Context context;
     private ViewGroup container;
     private Bundle savedInstanceState;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
     /**
      * 当从另一个activity回到fragment所在的activity
      * 当fragment回调onResume方法的时候，可以通过这个变量判断fragment是否可见，来决定是否要刷新数据

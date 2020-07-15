@@ -21,6 +21,7 @@ import com.learn.core.utils.FragmentUtils;
 import com.learn.template.R;
 import com.learn.template.base.BaseActivity;
 import com.learn.template.fragment.ClassifyFragment;
+import com.learn.template.fragment.ExpandLayoutFragment;
 import com.learn.template.fragment.HomeFragment;
 import com.learn.template.fragment.MeFragment;
 import com.learn.template.fragment.ShopFragment;
@@ -47,7 +48,7 @@ public class MainActivity extends BaseActivity {
         mFragments[0] = HomeFragment.newInstance();
         mFragments[1] = ClassifyFragment.newInstance();
         mFragments[2] = ShopFragment.newInstance();
-        mFragments[3] = MeFragment.newInstance();
+        mFragments[3] = ExpandLayoutFragment.newInstance();//MeFragment.newInstance();//ExpandLayoutFragment.newInstance();
         FragmentUtils.add(getSupportFragmentManager(), mFragments, R.id.fragment_container, curIndex);
         StatusBarUtil.setStatusBarColor(this,getResources().getColor(R.color.colorPrimaryDark));
         initUnReadMessageViews();

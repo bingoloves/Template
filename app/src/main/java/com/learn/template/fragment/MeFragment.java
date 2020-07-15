@@ -1,15 +1,10 @@
 package com.learn.template.fragment;
 
-import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import com.google.gson.Gson;
 import com.jeremyliao.liveeventbus.LiveEventBus;
 import com.learn.component.archeaderview.LGradientArcHeaderView;
 import com.learn.component.utils.UnreadMsgUtils;
@@ -20,14 +15,11 @@ import com.learn.pay.PayApi;
 import com.learn.pay.TestRequestUtils;
 import com.learn.pay.WxPayBean;
 import com.learn.picker.adapter.ArrayWheelAdapter;
-import com.learn.picker.adapter.NumericWheelAdapter;
 import com.learn.picker.dataset.OptionDataSet;
 import com.learn.picker.picker.BasePicker;
 import com.learn.picker.picker.OptionPicker;
 import com.learn.picker.picker.TimePicker;
-import com.learn.picker.util.DateUtil;
 import com.learn.picker.util.Util;
-import com.learn.picker.widget.BasePickerView;
 import com.learn.picker.widget.DefaultCenterDecoration;
 import com.learn.picker.widget.PickerView;
 import com.learn.template.R;
@@ -39,7 +31,6 @@ import com.learn.template.bean.Province;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
